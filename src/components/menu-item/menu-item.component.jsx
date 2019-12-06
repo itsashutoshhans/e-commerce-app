@@ -16,4 +16,13 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
   </div>
 );
 
-export default withRouter(MenuItem);
+
+/**
+ * because <Route> only passes the props to first child then to receive history 
+ * props here in the menuItem component we will have to tunnel the props upto here
+ * which is a bad pattern (children in between don't actually need that propetery)
+ * Therefore, withRouter(higher order component) is used here to give access to 
+ * the props with Route provides
+ */
+
+export default withRouter(MenuItem); 
